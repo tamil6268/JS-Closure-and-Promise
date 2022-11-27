@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        body{margin: 0,auto;padding: 0;background-color: black;}
+        .parent{display: flex;flex: row ;text-align: center;justify-content: space-around;color:white;}
+         .show button{width: 120px;height: 35px;margin-top: 10px;}
+         .show h2{margin-top:0;text-align: center;color:white;}
+          
+         .show img{width: 400px;height:400px;text-align:center;margin-left:430px;border-radius: 50%;}
+         .show h4{text-align: center;color:white;}
+         .show{
+            border: none;
+         }
+          
+          
+    </style>
+
+
+</head>
+<body>
+    <h1 style="text-align:center;color:white;">WELCOME TO JAVA-SCRIPT</h1>
+    
+    <div class="show" id="main" style="border-color:black6766666;"></div>
+
+    <div class="parent">
+        <button onclick="randomClick()">CLICK HERE</button>
+    </div>
+    
+    
+    <script type="text/javascript">
+             const data =[
+            {name:"I Think All Of You Know About Me, \"Am \"SHARA\" Desert\"",img:"./shara desert.jpg",locate:"RAJASTAN"},
+            {name:"I Think All Of You Know About Me, \"Am \"ADITI\" Actress\"",img:"./aditi.jpg",locate:"TAMILNADU"}
+            
+         ];
+
+        let main = document.getElementById("main");
+
+        let img = document.createElement("img");
+        let name = document.createElement("h2");
+        let locate = document.createElement("h4");
+        let button = document.getElementsByTagName("button");
+
+        main.appendChild(name);
+        main.appendChild(img);
+        main.appendChild(locate);
+        
+        function randomClick(){
+            let value = Math.random() * 2;
+            let newValue = Math.floor(value);
+
+            name.innerHTML = data[newValue].name;
+            img.src = data[newValue].img;
+            locate.innerHTML = data[newValue].locate;
+
+            main.className = "show";
+        }
+      
+    </script>
+</body>
+</html>
