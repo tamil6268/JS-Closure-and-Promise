@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures</title>
+    <style type="text/css">
+*{
+    background-color: black;
+    user-select: none;
+}
+.h1{
+    color: antiquewhite;
+    text-align: center;
+    text-decoration: underline;
+    font-weight: 800;
+    font-size: 30px;
+}
+.h2{
+    color:khaki;
+    text-align: center;
+    font-size: 25px;
+    text-shadow: 8px 8px 18px red,9px 12px 24px green, 8px 8px 18px red;
+
+}
+
+.q{
+   font-size: x-large;
+   color:green;
+}
+.ans{
+    
+    font-size: x-large;
+    color: blue;
+}
+h5{
+  color: beige;
+  text-align: center;
+  font-size: x-large;
+}
+    </style>
+</head>
+<body>
+    <div class="h1">JAVA SCRIPT</div>
+    <br><br>
+    <div class="h2">CLOSURES</div>
+    <h5>[ Closure is the combination of function bundle together with Lexical Environment ]</h5>
+<hr><hr>
+    <div class="q">
+        <pre>1.   function counter(){
+            var counter = 0;
+        
+            function IncreaseCounter() {
+                return counter += 1;
+            };
+        
+            return IncreaseCounter;
+        }
+        
+        var counter = counter();
+        alert(counter());
+        alert(counter());
+        alert(counter());
+        alert(counter());</pre>
+    </div><br>    
+        <br>
+       <pre class="ans"><span style="color:red;">Answer:</span> Alert get 4 times (first time 1 , second time 2 ,third time 3 and fourth time 4)totally four times popup. </pre>
+    <hr>
+    <div class="q"><pre>2. Let count = 0;
+  (function func() {
+  if (count === 0) {
+    const count = 1;
+    console.log(count);
+  }
+  console.log(count);
+  })();
+    </pre>
+        </div>
+           <pre class="ans"> <span style="color:red;">Answer:</span> inside if condition it will = 1<br>
+            ouside condition it will = 0</pre>
+        <hr>
+    <div class="q"><pre>3.for (var i = 0; i < 3; i++) {
+      setTimeout(function log() {
+        console.log(i);
+      }, 1000);
+    }</pre>
+        <pre class="ans"><span style="color:red;">Answer:</span> 3 <br>        3 <br>        3 <br>  It will give the updated value of i as per times loop run <br>( here updated value is 3 and loop runs upto three times with 1000 millisecond )</pre>
+        <hr>
+    <div class="q"><pre>4.Write a code to calculate area of a rectangle using inner function. In this case outer function should accept parameter length and <br> inner function should accept parameter breadth.</pre>
+        <pre class="ans"><span style="color:red;">Answer:</span>function outer(length){
+          return function inner(breadth){
+              let area=length*breadth;
+              console.log(area);
+          }
+      }
+      let ans=outer(5);
+      ans(2);</pre>
+      <pre><span style="color:red;font-size: larger;">Note:</span>sample input : length = 5;(length is for outer-Function) <br>
+                     breadth = 2;(breadth is for inner-Function) <br></pre>
+        <hr>
+    <div class="q"><pre>5.Take a variable in outer function and create an inner function to increase the counter every time it is called.</pre>
+        <pre class="ans"><span style="color:red;">Answer:</span>function counter(){
+          var count= 1;
+              function IncreaseCounter() {
+                      return count++;
+                  };
+              return IncreaseCounter;
+          }
+          var ans = counter();
+          console.log(ans());
+          console.log(ans());
+          console.log(ans());
+          console.log(ans());</pre>
+          <pre><span style="color:red;font-size: larger;">Note:</span>Initially "count" value is "1" when we console after one by one it will get "count++" <br></pre>
+        <hr>
+    <div class="q"><pre>6.var a = 12;
+      (function () {
+        alert(a);
+      })();</pre>
+        <pre class="ans"><span style="color:red;">Answer:</span> It will popup(<span style="color:red;">ALERT</span>) the ans "a" as 12.</pre>
+        <hr>
+    <div class="q"><pre>7.var a = 10;
+      var x = (function () {
+        var a = 12;
+        return function () {
+          alert(a);
+        };
+      })();
+      x();</pre>
+        <pre class="ans"><span style="color:red;">Answer:</span> It will popup(<span style="color:red;">ALERT</span>) the ans updated "a" as 12.</pre>
+        <hr>
+    <div class="q"><pre>8.var globalVar = "xyz";
+
+      (function outerFunc(outerArg) {
+          var outerVar = 'a';
+          
+          (function innerFunc(innerArg) {
+          var innerVar = 'b';
+          
+          console.log(
+              `outerArg = ${outerArg}\n
+               innerArg = ${innerArg}\n
+               outerVar = ${outerVar}\n
+               innerVar = ${innerVar}\n
+              globalVar = ${globalVar}`);
+          
+          })(456);
+      })(123);</pre>
+        <pre class="ans"><span style="color:red;">Answer:</span> outerArg = 123;
+        innerArg = 456;
+        outerVar = a;
+        innerVar = b; 
+        globalVar = xyz;</pre>
+        <hr>
+
+
+    <script type="text/javascript">
+// function counter(){
+//             var counter = 0;
+        
+//             function IncreaseCounter() {
+//                 return counter += 1;
+//             };
+        
+//             return IncreaseCounter;
+//         }
+        
+//         var counter = counter();
+//         alert(counter());
+//         alert(counter());
+//         alert(counter());
+//         alert(counter());
+
+// var count = 0;
+// (function func() {
+//   if (count === 0) {
+//     const count = 1;
+//     console.log(count);
+//   }
+//   console.log(count);
+// })();
+
+// for (var i = 0; i < 3; i++) { //it will give the updated value of i as per times loop run.
+//   setTimeout(function log() {
+//     console.log(i);
+//   }, 1000);
+// }
+
+// var a = 12;
+// (function () {
+//   alert(a);
+// })();
+
+// var a = 10;
+// var x = (function () {
+//   var a = 12;
+//   return function () {
+//     alert(a);
+//   };
+// })();
+// x();
+
+// var globalVar = "xyz";
+
+// (function outerFunc(outerArg) {
+//     var outerVar = 'a';
+    
+//     (function innerFunc(innerArg) {
+//     var innerVar = 'b';
+    
+//     console.log(
+//         `outerArg = ${outerArg}\n
+//          innerArg = ${innerArg}\n
+//          outerVar = ${outerVar}\n
+//          innerVar = ${innerVar}\n
+//         globalVar = ${globalVar}`);
+    
+//     })(456);
+// })(123);
+
+
+// function outer(length){
+//     return function inner(breadth){
+//         let area=length*breadth;
+//         console.log(area);
+//     }
+// }
+// let ans=outer(5);//this is for length-outer func
+// ans(2);//this is for breadth inner-func
+    </script>
+</body>
+</html>
